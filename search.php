@@ -10,5 +10,12 @@
 <br>
 <button type="submit" form="search" value="Submit">Search</button>
 <br><br><br>
-<a href="browse.php"><b>Or Just browse</b></a>
+<a href="browse.php"><b>Or Just browse</b></a><br>
+ <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 </center>

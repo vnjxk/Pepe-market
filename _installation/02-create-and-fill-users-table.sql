@@ -25,3 +25,13 @@ CREATE TABLE `pepemarket`.`pepes` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci;
+
+
+CREATE TABLE `pepemarket`.`comments` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user` VARCHAR(64) NULL,
+  `comment` LONGTEXT NULL,
+  `date` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+ALTER TABLE `pepemarket`.`comments` 
+ADD COLUMN `listingid` INT NULL AFTER `date`;

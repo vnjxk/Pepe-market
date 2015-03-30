@@ -13,18 +13,20 @@ if ($query == null)
 	die();
 }
 $result = mysql_query("SELECT * FROM pepes WHERE Owner='$query'");
-
 if($result === FALSE) { 
-    die();
+   echo "Error";
+   die();
 	
 }
-if (mysql_fetch_array($result) == null)
+if (mysql_num_rows( $result ) == 0)
 {
 	echo "you have no pepe(s)";
+	die();
 }
+echo '<b>To get full sized image , right click > Copy Image Location. and then paste it in your URL bar</b><br>';
 while($row = mysql_fetch_array($result))
 {
-	
+	echo '<hr>';
     $title = $row['Title'];
 	$desc = $row['description'];
 	$owner = $row['Owner'];
@@ -34,9 +36,20 @@ while($row = mysql_fetch_array($result))
 	$id = $row['idPepes'];
 	$adddate = $row['DateAdded'];
 	echo 'Watermarked - - - -   clear<br>';
-	echo '<img src="sell/'.$WMpath.'" style="width:100px;height:100px" /> ';
-	echo '<img src="sell/'.$CLRpath.'" style="width:100px;height:100px" /> ';
-   echo '<a href=delete.php?id='. $id .'><b>'. $title . ' - Price:' . $price .'</b></a>';
-	echo '<br></br>';
+	echo '<div style=";font-size:24pt;color:white;">';
+echo '<a style="; text-decoration: none;" href=listing.php?id='. $id .'>';
+	echo '<img src="sell/'.$WMpath.'" style="vertical-align: middle;width:100px;height:100px" /> ';
+	echo '<img src="sell/'.$CLRpath.'" style="vertical-align: middle;width:100px;height:100px" /> ';
+   echo ' <font color="black"> &nbsp&nbsp-&nbsp&nbsp <b>'. $title  .'</b></font>';
+	echo '</div></a>';
 }
+echo '<hr>';
 ?>
+
+ <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

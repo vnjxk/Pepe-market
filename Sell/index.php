@@ -17,12 +17,16 @@ if ($login->isUserLoggedIn() == false) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
     header( "Location: http://". strip_tags( $_SERVER ['HTTP_HOST'] ) );
+	
     
 } 
+
+
+
 	?>
 </head>
 <body id="main_body" >
-	
+
 	
 	<div id="form_container">
 	
@@ -31,7 +35,7 @@ if ($login->isUserLoggedIn() == false) {
 					<div class="form_description">
 			<h2>Sell your Pepe here</h2>
 			<p>All pepe's are watermarked with our system automated watermarker.
-Pepe's pre-watermarked will be deleted! </p>
+Pepe's pre-watermarked will be deleted!(successful adding will just reload the page.)<br> Gifs cant be watermarked.(but can be safely uploaded) </p>
 		</div>						
 			<ul >
 			
@@ -61,11 +65,18 @@ Pepe's pre-watermarked will be deleted! </p>
 			    
 			    
 				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+			
 		</li>
 			</ul>
 		</form>	
 
 	</div>
-	
+	 <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 	</body>
 </html>

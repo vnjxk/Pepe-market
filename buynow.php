@@ -31,6 +31,9 @@ if(!isset($sure)){
 </form>
 
 <button type="submit" form="makinsure" value="Submit">Are you sure? (click to say yes)</button> ';
+
+ echo '<br><br><br><br><a href=listing.php?id='. $_GET['id'] .'><b> Go back to listing</b></a>';
+ die();
 }
 else{
 require_once("config/db.php");
@@ -50,6 +53,10 @@ while($row = mysql_fetch_array($result))
 	$owner = $row['Owner'];
 	$CLRpath = $row['CLRLocation'];
 	$price = $row['Price'];    
+	if ($price < 1)
+	{
+		die();
+	}
 }
 /***********************************************************/
 $buyer = mysql_real_escape_string($buyer);
@@ -86,10 +93,21 @@ else
    die();
    }
 }
-	
+	   $result = mysql_query("INSERT INTO pepes
+          ( Title
+          , WMLocation , CLRLocation ,Price , Owner
+          )
+     SELECT Title
+          , WMLocation , CLRLocation ,'0' , '$buyer'
+           
+      FROM pepes WHERE idPepes = '$query' ");
+   if($result === FALSE) { 
+   echo "error!";
+   die();
+   }
 	
 	}
 echo 'Success!<br>';
 echo '<img src="sell/'.$CLRpath.'" /> ';
- echo '<br><a href=listing.php?id='. $id .'><b> Go back to listing</b></a>';
+ echo '<br><a href=listing.php?id='. $_GET['id'] .'><b> Go back to listing</b></a>';
 ?>

@@ -21,9 +21,12 @@ while($row = mysql_fetch_array($result))
 	$price = $row['Price'];
 	$id = $row['idPepes'];
 	$adddate = $row['DateAdded'];
+	if ($price > 0)
+	{
 	echo '<img src="sell/'.$WMpath.'" style="width:100px;height:100px" /> ';
    echo '<a href=listing.php?id='. $id .'><b>'. $title . ' - Price:' . $price .'</b></a>';
 	echo '<br></br>';
+	}
 }
 ?>
 
