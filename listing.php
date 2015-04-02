@@ -19,13 +19,7 @@ session_start();
 if (mysql_num_rows( $result ) == 0)
 {
 	echo "Listing not found<br><br>";
-	echo ' <button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>';
+	echo ' <a href="home.php" ><button>Home</button></a>';
 	die();
 }
 if($result === FALSE) { 

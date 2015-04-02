@@ -34,7 +34,7 @@ if($result === FALSE) {
 }
 else{
 	echo "Pepe has been deleted";
-header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+header('Location: ' . dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI])") . '/mypepes.php' . '');
 }
 
 ?>

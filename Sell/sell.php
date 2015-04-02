@@ -91,6 +91,7 @@ $WMpath = 'WMPepes/';
     }
 	else {
 		echo "Error with the image";
+		
 	}
 /****/
 
@@ -114,13 +115,13 @@ if (mysqli_connect_error()) {
 die('Connect Error (' . mysqli_connect_errno() . ') '
 . mysqli_connect_error());
 }
+
 $sql = "INSERT INTO pepes (Title, Description, DateAdded, WMLocation, CLRLocation, Price, Owner)
 VALUES('" . $title . "', '" . $desc . "', '" . date('Y-m-d H:i:s') . "', '" . $WMpath . "', '" . $uploadpath . "', '" . $price . "', '" . $_SESSION['user_name'] . "');";
 $query_new_user_insert = $mysqli->query($sql);
 if ($query_new_user_insert) {
 echo "Uploaded!";
-
-header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+header('Location: ' . dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI])")) . '') . '';
 } else {
 echo "Upload failed. Please go back and try again.";
 }

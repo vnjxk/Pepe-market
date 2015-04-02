@@ -16,7 +16,7 @@ $login = new Login();
 if ($login->isUserLoggedIn() == false) {
     // the user is logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are logged in" view.
-    header( "Location: http://". strip_tags( $_SERVER ['HTTP_HOST'] ) );
+   header('Location: ' . dirname(dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI])")) . '');
 	
     
 } 
@@ -71,12 +71,8 @@ Pepe's pre-watermarked will be deleted!(successful adding will just reload the p
 		</form>	
 
 	</div>
-	 <button onclick="goBack()">Go Back</button>
+	 <a href="../home.php" ><button>Home</button></a>
 
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
+
 	</body>
 </html>

@@ -1,3 +1,4 @@
+<a href="home.php" ><button>Home</button></a><br>
 <?php
 
 
@@ -46,10 +47,3 @@ echo '<a style="; text-decoration: none;" href=listing.php?id='. $id .'>';
 echo '<hr>';
 ?>
 
- <button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>

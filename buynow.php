@@ -109,5 +109,7 @@ else
 	}
 echo 'Success!<br>';
 echo '<img src="sell/'.$CLRpath.'" /> ';
+
+header('Location: ' . dirname("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI])") . '/mypepes.php' . '');
  echo '<br><a href=listing.php?id='. $_GET['id'] .'><b> Go back to listing</b></a>';
 ?>
